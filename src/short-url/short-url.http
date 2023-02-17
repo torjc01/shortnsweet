@@ -1,0 +1,62 @@
+#/*
+#* Copyright (c) 2022 Gouvernement du Québec
+#* Auteur: Julio Cesar Torres 
+#* SPDX-License-Identifier: LiLiQ-R-v.1.1
+#* License-Filename: /LICENSE
+#*/
+##############################################################
+# Requetes http pour l'émeteur d'attestations d'accès virtuel
+##############################################################
+# Avant usage, il faut renseigner les champs X-API-Key des 
+# endpoints qui seront utilisés. 
+# 
+### Définition des variables globales 
+@hostname = http://localhost:3000
+@id = 1
+# ============================================================================
+#    Entity: short-url
+#    Endpoint: /short-url
+# ============================================================================
+
+####
+#### Selects all short-url 
+#### 
+GET {{hostname}}/v1/short-url HTTP/1.1
+X-API-Key: 
+Content-Type: application/json
+
+
+####
+#### Selects a short-url 
+#### 
+GET {{hostname}}/v1/short-url/{{id}} HTTP/1.1
+X-API-Key: 
+Content-Type: application/json
+
+####
+#### Create a new short-url 
+#### 
+POST {{hostname}}/v1/short-url HTTP/1.1
+X-API-Key: 
+Content-Type: application/json
+
+{
+    "originalUrl": "https://spgouvqc-my.sharepoint.com/personal/francis_gagne_mcn_gouv_qc_ca/_layouts/15/stream.aspx?id=%2Fpersonal%2Ffrancis%5Fgagne%5Fmcn%5Fgouv%5Fqc%5Fca%2FDocuments%2FEnregistrements%2FInnovation%20%2D%20Partage%20de%20connaissance%2D20230210%5F110554%2DEnregistrement%20de%20la%20r%C3%A9union%2Emp4&ga=1", 
+    //"uniqueId": "krypto-en", 
+    "numberClicks": 0, 
+    "user": "juliozohar"
+}
+
+
+####
+#### Create a new batch of short-url 
+#### 
+POST {{hostname}}/v1//short-url HTTP/1.1
+X-API-Key: 
+Content-Type: application/json
+
+[
+    {
+        
+    },
+]
