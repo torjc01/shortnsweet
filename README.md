@@ -19,8 +19,15 @@ Outra motivação, é dar mais liberdade ao desenvolvedor para utilizar endereç
 
 A motivaçao final é aceitar URLs com tamanho que passe o aceito pela média dos shorteners comerciais (possivelmente 256 caracteres). Nós permitiremos URLs que tenham até 2Kb de tamanho, fazendo que assim tenhamos endereços encurtados para protocolos de comunicação especiais, próprios para o desenvolvimento. 
 
+## Shortening
+<div align="center">
+  <img src="assets/images/shortening.png" />
+</div>
 
-
+## Redirecting
+<div align="center">
+  <img src="assets/images/redirection.png" />
+</div>
 
 ## Installation
 
@@ -60,10 +67,11 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
+- Author - [Julio Torres](https://kryptogarten.ca)
+- Website - [https://nestjs.com](https://www.shortnsweet.link/)
 - Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
