@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ShortUrlModule } from './short-url/short-url.module';
+import { ShortUrlService } from './short-url/short-url.service';
 
 require('dotenv').config();
 
@@ -19,6 +20,6 @@ require('dotenv').config();
       synchronize: true
     }),],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ShortUrlService],
 })
 export class AppModule {}

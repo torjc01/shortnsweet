@@ -19,11 +19,8 @@ export class AppController {
    * @param id URL longo registrada no banco de dados e relacionada ao shortURL recebido
    * @param response objeto http response do express utilizado para fazer o encaminhamento à página de destino
    */
-  @Get(':id')
-  getUrlRedirect(@Param('id') id: string, @Res() response){
-    /*let short = 'http://www.'+  id + '.com'; 
-    console.log(short); 
-    response.redirect(short); */ 
-    this.appService.getUrlRedirect(id, response); 
+  @Get(':uniqueId')
+  getUrlRedirect(@Param('uniqueId') uniqueId: string, @Res() response){
+    this.appService.getUrlRedirect(uniqueId, response); 
   }
 }
