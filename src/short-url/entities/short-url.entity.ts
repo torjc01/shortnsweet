@@ -3,13 +3,13 @@ import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeor
 @Entity()
 export class ShortUrl {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn() 
     id: number; 
 
     @Column({length: 1024, default: ""})
     originalUrl: string; 
 
-    @Column({length: 10, default: ""})
+    @Column({length: 10, default: "", unique: true},)
     uniqueId: string; 
 
     @Column({default: 0})
