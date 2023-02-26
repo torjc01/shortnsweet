@@ -1,6 +1,6 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { QueryFailedError, Repository } from 'typeorm';
 import { CreateShortUrlDto } from './dto/create-short-url.dto';
 import { UpdateShortUrlDto } from './dto/update-short-url.dto';
 import { ShortUrl } from './entities/short-url.entity';
@@ -15,38 +15,56 @@ export class ShortUrlService {
   ){}
 
   create(createShortUrlDto: CreateShortUrlDto) {
-    createShortUrlDto.uniqueId = this.generateCode();
-    return this.shortUrlRepository.save(createShortUrlDto);    //return 'This action adds a new shortUrl';
+    
+    if(createShortUrlDto.uniqueId == ''){
+      const uid = this.generateCode();
+      createShortUrlDto.uniqueId = uid;
+    } 
+
+    try {
+      return this.shortUrlRepository.save(createShortUrlDto);
+    } catch (error) {
+      if(error instanceof QueryFailedError){
+        console.log("Query failed error");
+      }
+    }
   }
 
   findAll() {
     return this.shortUrlRepository.find(); 
-    // return `This action returns all shortUrl`;
   }
 
   findOne(id: number) {
     const shortUrl = this.shortUrlRepository.findOneBy({id}); 
-    
-    this.generateCode(); 
 
     if (!shortUrl){
       throw new NotFoundException(`Short-url  ${id} not found.`);
     }
     return  shortUrl;
-    return `This action returns a #${id} shortUrl`;
   }
 
-  update(id: number, updateShortUrlDto: UpdateShortUrlDto) {
-    return `This action updates a #${id} shortUrl`;
+  update(id: number, updateShortUrlDto: UpdateShortUrlDto) {  
+    return this.shortUrlRepository.update(id, updateShortUrlDto); 
   }
 
   remove(id: number) {
-    return `This action removes a #${id} shortUrl`;
+    return this.shortUrlRepository.delete(id); 
   }
 
   generateCode(): string{
     var id = crypto.randomBytes(6).toString('base64');
     console.log(id);
     return id;
+  } 
+
+   async findUnique(uniqueId: string): Promise<ShortUrl>{
+    const shortUrl = await this.shortUrlRepository.findOne({
+      where: { uniqueId },
+    });
+
+    if(!shortUrl){
+      throw new HttpException(`Link #${uniqueId} not found`, HttpStatus.NOT_FOUND);
+    }
+    return shortUrl;
   }
 }
