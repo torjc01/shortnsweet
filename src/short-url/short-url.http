@@ -12,7 +12,7 @@
 # 
 ### Définition des variables globales 
 @hostname = http://localhost:3000
-@id = 29
+@id = 1
 @short = "IsOboFA6"
 # ============================================================================
 #    Entity: short-url
@@ -48,8 +48,8 @@ X-API-Key:
 Content-Type: application/json
 
 {
-    "originalUrl": "https://www.alliancebresilcanada.com/cours-pour-enfants",
-    "uniqueId": "pt", 
+    "originalUrl": "https://github.com/torjc01/iluvcoffee/blob/master/package.json",
+    "uniqueId": "", 
     "numberClicks": 0, 
     "user": "juliozohar"
 }
