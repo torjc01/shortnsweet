@@ -1,0 +1,48 @@
+version: "3"
+
+services:
+  db:
+    container_name: ${APP}-mysqldb-${SUFFIX}
+    image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3307:3306
+    expose:
+      - 3307
+    env_file:
+      - .env
+    volumes:
+      - ./data/mysql-data:/var/lib/mysql
+    networks:
+      - ${NETWORK}
+
+  adminer: 
+    container_name: ${APP}-adminer-${SUFFIX}
+    image: adminer
+    restart: always
+    ports: 
+      - 8888:8080
+    depends_on:
+      - db
+    networks:
+      - ${NETWORK}
+
+  api:
+    container_name: ${APP}-api-${SUFFIX}
+    image: shortnsweet-backend
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    env_file:
+      - .env
+    ports:
+      - 3001:3000
+    networks: 
+      - ${NETWORK}
+    restart: unless-stopped
+    depends_on: 
+      - db
+
+networks:
+  shortnsweet-network:
