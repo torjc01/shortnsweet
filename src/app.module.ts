@@ -11,8 +11,9 @@ require('dotenv').config();
   imports: [ShortUrlModule, 
     TypeOrmModule.forRoot({
       type: 'mysql', 
-      host: 'localhost', 
-      port: 3306, 
+      // IMPORTANTE: Nao usar a variavel port, causa do erro 
+      // Nest  ERROR [TypeOrmModule] Unable to connect to the database. Error: connect ECONNREFUSED 127.0.0.1:3307 
+      host: process.env.MYSQL_HOST,
       username: process.env.MYSQL_USER, 
       password: process.env.MYSQL_PASSWORD, 
       database: process.env.MYSQL_DATABASE, 
