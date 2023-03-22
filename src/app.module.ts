@@ -18,7 +18,7 @@ require('dotenv').config();
       password: process.env.MYSQL_PASSWORD, 
       database: process.env.MYSQL_DATABASE, 
       autoLoadEntities: true, 
-      synchronize: true
+      synchronize: Boolean(process.env.SYNCHRONIZE)
     }),],
   controllers: [AppController],
   providers: [AppService, ShortUrlService],
