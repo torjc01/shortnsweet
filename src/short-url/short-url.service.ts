@@ -1,4 +1,4 @@
-import { BadRequestException, HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { QueryFailedError, Repository } from 'typeorm';
 import { CreateShortUrlDto } from './dto/create-short-url.dto';
@@ -52,11 +52,11 @@ export class ShortUrlService {
   }
 
   generateCode(): string{
-    var id = crypto.randomBytes(6).toString('base64');
-    console.log(id);
+    var id = crypto.randomBytes(6).toString("base64");
+    id = id.split('/').join('').split('+').join('').split('=').join('');
     return id;
   } 
-
+  
    async findUnique(uniqueId: string): Promise<ShortUrl>{
     const shortUrl = await this.shortUrlRepository.findOne({
       where: { uniqueId },
