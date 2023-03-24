@@ -57,7 +57,7 @@ export class ShortUrlService {
     return id;
   } 
   
-   async findUnique(uniqueId: string): Promise<ShortUrl>{
+  async findUnique(uniqueId: string): Promise<ShortUrl>{
     const shortUrl = await this.shortUrlRepository.findOne({
       where: { uniqueId },
     });
