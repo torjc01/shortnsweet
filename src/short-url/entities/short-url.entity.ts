@@ -6,7 +6,7 @@ export class ShortUrl {
     @PrimaryGeneratedColumn() 
     id: number; 
 
-    @Column({length: 1024, default: ""})
+    @Column({length: 2048, default: ""})
     originalUrl: string; 
 
     @Column({length: 10, default: "", unique: true},)
