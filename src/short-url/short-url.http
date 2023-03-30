@@ -11,7 +11,7 @@
 # endpoints qui seront utilisés. 
 # 
 ### Définition des variables globales 
-@hostname = http://localhost:3000
+@hostname = http://localhost:3001
 @id = 1
 @short = "IsOboFA6"
 # ============================================================================
@@ -48,7 +48,7 @@ X-API-Key:
 Content-Type: application/json
 
 {
-    "originalUrl": "https://github.com/torjc01/iluvcoffee/blob/master/package.json",
+    "originalUrl": "https://www.namecheap.com/support/knowledgebase/article.aspx/10491/2254/video-how-to-add-an-a-record-for-a-domain-name-in-namecheap-account/?gclid=CjwKCAjwzuqgBhAcEiwAdj5dRgkka1UMOlkLvp70ZXQBgWTegjrZXZ5HrdvF-qmpOnma8OEckw0qEBoCq60QAvD_BwE",
     "uniqueId": "", 
     "numberClicks": 0, 
     "user": "juliozohar"

@@ -19,23 +19,23 @@ Outra motivação, é dar mais liberdade ao desenvolvedor para utilizar endereç
 
 A motivaçao final é aceitar URLs com tamanho que passe o aceito pela média dos shorteners comerciais (possivelmente 256 caracteres). Nós permitiremos URLs que tenham até 2Kb de tamanho, fazendo que assim tenhamos endereços encurtados para protocolos de comunicação especiais, próprios para o desenvolvimento. 
 
-## Shortening
+## Minificando
 <div align="center">
   <img src="assets/images/shortening.png" />
 </div>
 
-## Redirecting
+## Redirecionando
 <div align="center">
   <img src="assets/images/redirection.png" />
 </div>
 
-## Installation
+## Instalaçao
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Executando a aplicaçao
 
 ```bash
 # development
@@ -48,7 +48,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Testes
 
 ```bash
 # unit tests

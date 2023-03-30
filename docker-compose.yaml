@@ -17,16 +17,43 @@ services:
     networks:
       - ${NETWORK}
 
-  adminer: 
-    container_name: ${APP}-adminer-${SUFFIX}
-    image: adminer
-    restart: always
-    ports: 
-      - 8888:8080
-    depends_on:
-      - db
-    networks:
-      - ${NETWORK}
+  #adminer: 
+  #  container_name: ${APP}-adminer-${SUFFIX}
+  #  image: adminer
+  #  restart: always
+  #  ports: 
+  #    - 8889:8080
+  #  depends_on:
+  #    - db
+  #  networks:
+  #    - ${NETWORK}
+
+  #omnidb:
+  #  container_name: ${APP}-omniDb-${SUFFIX}
+  #  image: taivokasper/omnidb
+  #  restart: always
+  #  volumes:
+  #    - ./data/omnidb:/etc/omnidb 
+    #links:
+    #  - postgres:postgres
+  #  ports:
+  #    - "8090:8080"
+  #    - "25482:25482"
+  #  networks:
+  #    - ${NETWORK}
+
+  #omniDb:
+  #  container_name: ${APP}-omniDb-${SUFFIX}
+  #  image: omnidbteam/omnidb:latest
+  #  restart: always
+  #  links:
+  #    - postgres:postgres
+  #  ports:
+  #    - 8889:8080
+  #  volumes: 
+  #    - ./data/omnidb:/home/omnidb/.omnidb/omnidb-server
+  #  networks:
+  #    - ${NETWORK}
 
   api:
     container_name: ${APP}-api-${SUFFIX}
@@ -37,7 +64,7 @@ services:
     env_file:
       - .env
     ports:
-      - 3001:3000
+      - 3000:3000
     networks: 
       - ${NETWORK}
     restart: unless-stopped
