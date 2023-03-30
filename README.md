@@ -19,6 +19,31 @@ Outra motivação, é dar mais liberdade ao desenvolvedor para utilizar endereç
 
 A motivaçao final é aceitar URLs com tamanho que passe o aceito pela média dos shorteners comerciais (possivelmente 256 caracteres). Nós permitiremos URLs que tenham até 2Kb de tamanho, fazendo que assim tenhamos endereços encurtados para protocolos de comunicação especiais, próprios para o desenvolvimento. 
 
+Para o deploy da aplicaçao, é necessario criar um arquivo `.env` na raiz da aplicaçao, e informar o conteudo abaixo: 
+
+```bash
+# Variables d'environnement
+APP=shortnsweet
+SUFFIX=dev
+NETWORK=shortnsweet-network
+MODE=DEV
+SECRET=
+
+# Variables d'environnement de la bd MySQL
+MYSQL_HOST=db
+MYSQL_PORT=3307
+MYSQL_ROOT_PASSWORD=
+MYSQL_USER=juliozohar
+MYSQL_PASSWORD=
+MYSQL_DATABASE=shortnsweet
+
+# TypeORM 
+# Em ambientes de desenvolvimento e homologação, setar para true
+# IMPORTANTE: PARA AMBIENTE DE PRODUÇÃO, SETAR PARA false!!!!!
+SYNCHRONIZE=true
+
+```
+
 ## Minificando
 <div align="center">
   <img src="assets/images/shortening.png" />
