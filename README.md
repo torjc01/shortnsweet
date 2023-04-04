@@ -2,24 +2,36 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-
-# Short'n'sweet - URL shortener para equipes de desenvolvimento
+# Short'n'Sweet - URL shortener para equipes de desenvolvimento
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Short'n'Sweet é um URL shortener pensado para equipes de desenvolvimento que necessitem de ter acesso facilitado a links minificados, sem se submeter às tarifas impostas pelos sites comerciais. 
 
-Short'n'sweet é um URL shortener pensado para equipes de desenvolvimento que necessitem de ter acesso facilitado a links minificados, sem se submeter às tarifas impostas pelos sites comerciais. 
+Outra motivação, é dar mais liberdade ao desenvolvedor para utilizar endereços que saiam dos protocolos standard para URLs, como `didcomm://`, e gerar links http para estes protocolos, especialmente para testes de comunicação com NFC. 
 
-Outra motivação, é dar mais liberdade ao desenvolvedor para utilizar endereços que saiam dos protocolos standard para URLs, como didcomm, e gerar links http para estes protocolos, especialmente para testes de comunicação com NFC. 
+A motivaçao final é aceitar URLs com tamanho que passe do aceito pela média dos shorteners comerciais (possivelmente 256 caracteres). Nós permitiremos URLs que tenham até 2Kb de tamanho, fazendo que assim tenhamos endereços encurtados para protocolos de comunicação especiais, próprios para o desenvolvimento. 
 
-A motivaçao final é aceitar URLs com tamanho que passe o aceito pela média dos shorteners comerciais (possivelmente 256 caracteres). Nós permitiremos URLs que tenham até 2Kb de tamanho, fazendo que assim tenhamos endereços encurtados para protocolos de comunicação especiais, próprios para o desenvolvimento. 
 
-Para o deploy da aplicaçao, é necessario criar um arquivo `.env` na raiz da aplicaçao, e informar o conteudo abaixo: 
+
+## Minificando
+<div align="center">
+  <img src="assets/images/shortening.png" />
+</div>
+
+## Redirecionando
+<div align="center">
+  <img src="assets/images/redirection.png" />
+</div>
+
+## Instalação
+
+Inicialmente, a instalação do dos pacotes nodejs é feita com o `npm`:  
+```bash
+$ npm install
+```
+
+Em seguida, para o deploy da aplicação, é necessário criar um arquivo `.env` na raiz da aplicação, e informar o conteúdo abaixo: 
 
 ```bash
 # Variables d'environnement
@@ -44,23 +56,9 @@ SYNCHRONIZE=true
 
 ```
 
-## Minificando
-<div align="center">
-  <img src="assets/images/shortening.png" />
-</div>
+## Executando a aplicação
 
-## Redirecionando
-<div align="center">
-  <img src="assets/images/redirection.png" />
-</div>
-
-## Instalaçao
-
-```bash
-$ npm install
-```
-
-## Executando a aplicaçao
+Para a execução do projeto localmente, seguir os comandos abaixo: 
 
 ```bash
 # development
@@ -71,6 +69,44 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
+```
+
+O caso de utilização mais comum, no entanto, será via container `docker`. Para executar o projeto containerizado, seguir os comandos abaixo: 
+
+```bash
+# Na primeira utilização, ou após modificações: 
+$ docker-compose build 
+
+# Em seguida, lançar a aplicação
+$ docker-compose up 
+
+```
+
+Parar a aplicação: 
+
+```bash
+$ docker-compose stop 
+```
+
+Remover os containers (em seguida, será obrigatório refazer o build dos containers):
+
+```bash
+$ docker-compose down 
+```
+
+## Criação do registro no Short'n'Sweet 
+
+Uma vez que a aplicação esteja no ar, é necessário acessar a funcionalidade de criação do registro via Swagger http://www.shortnsweet.link/api 
+
+No endpoint `POST /short-url`, colar o payload seguinte para a criação da url 
+
+```json 
+{
+    "originalUrl": "https://www.longo-url-que-sera-diminuido",
+    "uniqueId": "", 
+    "numberClicks": 0, 
+    "user": "nomedousuario"
+}
 ```
 
 ## Testes
@@ -86,17 +122,16 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## Suporte
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Como obter suporte para o Short'n'Sweet? 
 
 ## Stay in touch
 
 - Author - [Julio Torres](https://kryptogarten.ca)
-- Website - [https://nestjs.com](https://www.shortnsweet.link/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Website - [https://www.shortnsweet.link](https://www.shortnsweet.link/)
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+Short'n'Sweet is [MIT licensed](LICENSE).
 

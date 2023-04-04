@@ -58,3 +58,18 @@ Content-Type: application/json
 DELETE {{hostname}}/v1/short-url/{{id}} HTTP/1.1
 X-API-Key: 
 Content-Type: application/json
+
+
+
+@access-id=1
+@ngrokadress=https://f46b-107-159-197-196.ngrok.io
+
+# Endpoint temporaire entree acces/refus
+####
+PATCH {{hostname}}/v1/short-url/{{access-id}} HTTP/1.1
+X-API-Key: 
+Content-Type: application/json
+
+{
+    "originalUrl": "nouveaucrm/webhook/accept"
+}
