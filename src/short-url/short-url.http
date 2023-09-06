@@ -11,7 +11,8 @@
 # endpoints qui seront utilisés. 
 # 
 ### Définition des variables globales 
-@hostname = http://localhost:3001
+# @hostname = http://localhost:3001
+@hostname = https://shortnsweet.link
 @id = 1
 @short = "IsOboFA6"
 # ============================================================================
@@ -48,7 +49,7 @@ X-API-Key:
 Content-Type: application/json
 
 {
-    "originalUrl": "https://www.namecheap.com/support/knowledgebase/article.aspx/10491/2254/video-how-to-add-an-a-record-for-a-domain-name-in-namecheap-account/?gclid=CjwKCAjwzuqgBhAcEiwAdj5dRgkka1UMOlkLvp70ZXQBgWTegjrZXZ5HrdvF-qmpOnma8OEckw0qEBoCq60QAvD_BwE",
+    "originalUrl": "didcomm://invite?c_i=eyJAdHlwZSI6ICJkaWQ6c292OkJ6Q2JzTlloTXJqSGlxWkRUVUFTSGc7c3BlYy9jb25uZWN0aW9ucy8xLjAvaW52aXRhdGlvbiIsICJAaWQiOiAiOGU1OGYzZGItMzg3My00NTAyLTliZmEtNzM4MGJkNDczY2Y2IiwgInJlY2lwaWVudEtleXMiOiBbIjcxWXp2RmpLblNyTDQzdFpUVlRRN2k3cHZ4SG5uc1FvVkt2Z25UekpMODc2Il0sICJsYWJlbCI6ICJUZXN0IiwgInNlcnZpY2VFbmRwb2ludCI6ICJodHRwczovL2V4cC1wb3J0LWUtY29uc29tbWF0ZXVyLWFnZW50LmFwcHMuZXhwLm9wZW5zaGlmdC5jcWVuLmNhIn0=",
     "uniqueId": "", 
     "numberClicks": 0, 
     "user": "juliozohar"
