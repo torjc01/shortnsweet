@@ -39,26 +39,24 @@ APP=shortnsweet
 SUFFIX=dev
 NETWORK=shortnsweet-network
 MODE=DEV
-SECRET=
-
-# Variables d'environnement de la bd MySQL
-MYSQL_HOST=db
-MYSQL_PORT=3307
-MYSQL_ROOT_PASSWORD=
-MYSQL_USER=juliozohar
-MYSQL_PASSWORD=
-MYSQL_DATABASE=shortnsweet
-
+SECRET=    # *** Informe um valor para o segredo
+POSTGRES_HOST=db
+POSTGRES_NAME=url-courte
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=    # *** Informe um valor para a senha
+POSTGRES_ADMIN_PASSWORD=    # *** Informe um valor para a senha
 # TypeORM 
-# Em ambientes de desenvolvimento e homologação, setar para true
-# IMPORTANTE: PARA AMBIENTE DE PRODUÇÃO, SETAR PARA false!!!!!
+# Dans les environnements de developpement et d'acceptation, setter à true 
+# IMPORTANT: POUR L'ENVIRONNEMENT DE PROD, SETTER À false!!!!! Sinon on risque la perte de données à la prod. 
 SYNCHRONIZE=true
 
 ```
 
 ## Executando a aplicação
 
-Para a execução do projeto localmente, seguir os comandos abaixo: 
+### Executando local em modo dev
+
+Para a execução do projeto localmente em modo de desenvolvimento, execute os comandos abaixo: 
 
 ```bash
 # development
@@ -71,16 +69,23 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-O caso de utilização mais comum, no entanto, será via container `docker`. Para executar o projeto containerizado, seguir os comandos abaixo: 
+### Executando container docker 
+
+O caso de utilização mais comum, no entanto, será via container `docker`. Para executar o projeto containerizado, seguir os comandos abaixo, na raiz do projeto. 
 
 ```bash
-# Na primeira utilização, ou após modificações: 
-$ docker-compose build 
+# Faça a criaçao da imagem que sera utilizada 
+$ docker build . <usuario>/<nome_imagem>:<versao> # por exemplo, juliozohar/shortnsweet:1.0
 
-# Em seguida, lançar a aplicação
-$ docker-compose up 
+# Publique a imagem no Docker Hub (é necessario estar conectado à sua conta docker hub)
+docker push <usuario>/<nome_imagem>:<versao> # por exemplo, juliozohar/shortnsweet:1.0
+
+# Em seguida, lance a aplicação, em modo detached. 
+$ docker-compose up -d &
 
 ```
+
+A aplicaçao sera executada na porta que esta configurada no arquivo docker-compose.yaml, parâmetro `ports:`. A primeira porta é a externa, pela qual a aplicaçao responde as requisicoes do mundo exterior; a segunda porta é a interna, porta que o container conhece e executa a aplicaçao internamente.  
 
 Parar a aplicação: 
 
@@ -88,7 +93,7 @@ Parar a aplicação:
 $ docker-compose stop 
 ```
 
-Remover os containers (em seguida, será obrigatório refazer o build dos containers):
+Remover os containers: 
 
 ```bash
 $ docker-compose down 
