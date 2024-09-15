@@ -20,7 +20,7 @@ export class AppService {
       
       if(!shortUrl){
         console.log("Link nao encontrado; redirecionando para pagina de entrada"); 
-        response.redirect("http://localhost:3000");
+        response.redirect("https://www.kryptogarten.ca/sns404.html");
       }
 
       // Incrementa a quantidade de clicks recebidas pelo link
@@ -41,7 +41,7 @@ export class AppService {
       console.log(shortUrl);
       if (!shortUrl){
         console.log(`Nao localizado`); 
-        response.redirect("http://localhost:3000/")
+        response.redirect("https://www.kryptogarten.ca/sns404.html/")
         return;
       }
     } catch (error) {
